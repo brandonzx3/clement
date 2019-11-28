@@ -17,6 +17,15 @@ public class PlayerController : MonoBehaviour {
 
     List<Vector2> positions;
 
+    private bool isGrounded;
+    public Transform feetPos;
+    public float cheakRadius;
+    public LayerMask whatIsGround;
+
+    private float jumpTimeCounter;
+    public float jumpTime;
+    private bool isJumping;
+
 	// Use this for initialization
 	void Start () {
         positions = new List<Vector2>();
@@ -25,6 +34,9 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        isGrounded = Physics2D.OverlapCircle(feetPos.position, cheakRadius, whatIsGround);
+
         if(!isRewinding)
         {
             if (Input.GetKey(left))
@@ -40,9 +52,29 @@ public class PlayerController : MonoBehaviour {
                 rb.velocity = new Vector2(0, rb.velocity.y);
             }
 
-            if (Input.GetKeyDown(jump))
+            if (Input.GetKey(jump) && isGrounded)
             {
+                isJumping = true;
+                jumpTimeCounter = jumpTime;
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            }
+
+            if(Input.GetKey(jump) && isJumping)
+            {
+                if(jumpTimeCounter > 0)
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                    jumpTimeCounter -= Time.deltaTime;
+                }
+                else
+                {
+                    isJumping = false;
+                }
+            }
+
+            if(Input.GetKeyUp(jump))
+            {
+                isJumping = false;
             }
         }
 
