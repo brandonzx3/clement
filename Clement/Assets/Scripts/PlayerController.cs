@@ -25,22 +25,25 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKey(left))
+        if(!isRewinding)
         {
-            rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
-        }
-        else if(Input.GetKey(right))
-        {
-            rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
-        }
-        else
-        {
-            rb.velocity = new Vector2(0, rb.velocity.y);
-        }
+            if (Input.GetKey(left))
+            {
+                rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
+            }
+            else if (Input.GetKey(right))
+            {
+                rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+            }
+            else
+            {
+                rb.velocity = new Vector2(0, rb.velocity.y);
+            }
 
-        if(Input.GetKeyDown(jump))
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            if (Input.GetKeyDown(jump))
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            }
         }
 
         if(Input.GetMouseButton(1))
@@ -58,13 +61,13 @@ public class PlayerController : MonoBehaviour {
         if(isRewinding)
         {
             rb.isKinematic = true;
-            rb.gravityScale = 0;
+            Time.timeScale = 2;
             Rewind();
         }
         else
         {
             rb.isKinematic = false;
-            rb.gravityScale = 1;
+            Time.timeScale = 1;
             Record();
         }
     }
@@ -75,6 +78,7 @@ public class PlayerController : MonoBehaviour {
         {
             transform.position = positions[0];
             positions.RemoveAt(0);
+            rb.velocity = new Vector2(0, 0);
         }
     }
 
