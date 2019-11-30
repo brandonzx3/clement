@@ -28,13 +28,16 @@ public class PlayerController : MonoBehaviour {
 
     private Animator anim;
 
+    public bool hasKey = false;
+
 	// Use this for initialization
 	void Start () {
+        DontDestroyOnLoad(gameObject);
         positions = new List<Vector2>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 
