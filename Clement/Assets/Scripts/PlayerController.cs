@@ -26,10 +26,13 @@ public class PlayerController : MonoBehaviour {
     public float jumpTime;
     private bool isJumping;
 
+    private Animator anim;
+
 	// Use this for initialization
 	void Start () {
         positions = new List<Vector2>();
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -86,6 +89,19 @@ public class PlayerController : MonoBehaviour {
         {
             isRewinding = false;
         }
+
+        if(rb.velocity.x < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else if(rb.velocity.x > 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+
+        anim.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
+        anim.SetBool("Grounded", isGrounded);
+        anim.SetBool("IsRewinding", isRewinding);
 	}
 
     void FixedUpdate()
