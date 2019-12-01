@@ -20,6 +20,7 @@ public class Door : MonoBehaviour {
     {
         player = GameObject.FindGameObjectWithTag("Player");
         controller = player.GetComponent<PlayerController>();
+        locked = (PlayerPrefs.GetInt("state") != 0);
     }
 
 	// Update is called once per frame
@@ -33,6 +34,7 @@ public class Door : MonoBehaviour {
                 if(!locked)
                 {
                     player.transform.position = loadPos;
+                    controller.positions.Clear();
                     SceneManager.LoadScene(scene);
                 }
                 else
@@ -54,5 +56,6 @@ public class Door : MonoBehaviour {
         {
             sprite.sprite = openSprite;
         }
-	}
+        PlayerPrefs.SetInt("state", (locked ? 1 : 0));
+    }
 }

@@ -536,6 +536,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114626452020861422, guid: d880b10e0c605584e94e704390894b41,
+        type: 2}
+      propertyPath: scene
+      value: SampleScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 114626452020861422, guid: d880b10e0c605584e94e704390894b41,
+        type: 2}
+      propertyPath: loadPos.x
+      value: 25.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114626452020861422, guid: d880b10e0c605584e94e704390894b41,
+        type: 2}
+      propertyPath: loadPos.y
+      value: -2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114626452020861422, guid: d880b10e0c605584e94e704390894b41,
+        type: 2}
+      propertyPath: locked
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d880b10e0c605584e94e704390894b41, type: 2}
   m_IsPrefabAsset: 0

@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour {
 
     public bool isRewinding = false;
 
-    List<Vector2> positions;
+    public List<Vector2> positions;
 
     private bool isGrounded;
     public Transform feetPos;
@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour {
     private float jumpTimeCounter;
     public float jumpTime;
     private bool isJumping;
+    public bool canJump = true;
 
     public bool isCourching = false;
 
@@ -64,29 +65,33 @@ public class PlayerController : MonoBehaviour {
                 rb.velocity = new Vector2(0, rb.velocity.y);
             }
 
-            if (Input.GetKey(jump) && isGrounded)
+            if(canJump)
             {
-                isJumping = true;
-                jumpTimeCounter = jumpTime;
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            }
-
-            if(Input.GetKey(jump) && isJumping)
-            {
-                if(jumpTimeCounter > 0)
+                if (Input.GetKey(jump) && isGrounded)
                 {
+                    isJumping = true;
+                    jumpTimeCounter = jumpTime;
                     rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                    jumpTimeCounter -= Time.deltaTime;
                 }
-                else
+
+                if (Input.GetKey(jump) && isJumping)
                 {
-                    isJumping = false;
+                    if (jumpTimeCounter > 0)
+                    {
+                        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                        jumpTimeCounter -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        isJumping = false;
+                        canJump = false;
+                    }
                 }
             }
-
-            if(Input.GetKeyUp(jump))
+            if (Input.GetKeyUp(jump))
             {
                 isJumping = false;
+                canJump = true;
             }
         }
 

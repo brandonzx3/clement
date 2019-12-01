@@ -267,6 +267,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   jumpTime: 0.2
+  canJump: 1
   isCourching: 0
   hasKey: 0
 --- !u!95 &104277766
