@@ -19,7 +19,7 @@ public class Chest : MonoBehaviour {
 
         if(distance <= 1)
         {
-            if(Input.GetKeyDown(KeyCode.Return))
+            if(Input.GetKeyDown(KeyCode.E))
             {
                 opened = true;
             }
