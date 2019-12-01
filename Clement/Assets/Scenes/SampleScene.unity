@@ -259,6 +259,7 @@ MonoBehaviour:
   left: 97
   right: 100
   jump: 32
+  down: 115
   isRewinding: 0
   feetPos: {fileID: 1533739464}
   cheakRadius: 0.1
@@ -266,8 +267,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   jumpTime: 0.2
+  isCourching: 0
   hasKey: 0
-  loadPos: {x: 3.039, y: -2.514}
 --- !u!95 &104277766
 Animator:
   serializedVersion: 3
@@ -335,6 +336,12 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114575766861648962, guid: e0f7242de452fb141b6136accc54968f,
+        type: 2}
+      propertyPath: keyFollow
+      value: 
+      objectReference: {fileID: 1919407682640974, guid: 227b0f232558fe044be0e7016b1457c1,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0f7242de452fb141b6136accc54968f, type: 2}
   m_IsPrefabAsset: 0
@@ -18272,6 +18279,11 @@ Prefab:
         type: 2}
       propertyPath: loadPos.y
       value: -1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114626452020861422, guid: d880b10e0c605584e94e704390894b41,
+        type: 2}
+      propertyPath: scene
+      value: Test
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d880b10e0c605584e94e704390894b41, type: 2}

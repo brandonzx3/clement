@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour {
     public KeyCode left;
     public KeyCode right;
     public KeyCode jump;
+    public KeyCode down;
 
     public bool isRewinding = false;
 
@@ -26,9 +27,13 @@ public class PlayerController : MonoBehaviour {
     public float jumpTime;
     private bool isJumping;
 
+    public bool isCourching = false;
+
     private Animator anim;
 
     public bool hasKey = false;
+
+    BoxCollider2D col;
 
 	// Use this for initialization
 	void Start () {
@@ -36,6 +41,7 @@ public class PlayerController : MonoBehaviour {
         positions = new List<Vector2>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        col = GetComponent<BoxCollider2D>();
 	}
 
 	// Update is called once per frame
@@ -43,7 +49,7 @@ public class PlayerController : MonoBehaviour {
 
         isGrounded = Physics2D.OverlapCircle(feetPos.position, cheakRadius, whatIsGround);
 
-        if(!isRewinding)
+        if(!isRewinding || isCourching)
         {
             if (Input.GetKey(left))
             {
@@ -84,6 +90,17 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
+        if(Input.GetKey(down) && isGrounded)
+        {
+            isCourching = true;
+            moveSpeed = 0;
+        }
+        else
+        {
+            isCourching = false;
+            moveSpeed = 5;
+        }
+
         if(Input.GetMouseButton(1))
         {
             isRewinding = true;
@@ -105,6 +122,7 @@ public class PlayerController : MonoBehaviour {
         anim.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
         anim.SetBool("Grounded", isGrounded);
         anim.SetBool("IsRewinding", isRewinding);
+        anim.SetBool("IsCrouching", isCourching);
 	}
 
     void FixedUpdate()

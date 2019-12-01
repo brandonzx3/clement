@@ -13,6 +13,8 @@ public class Door : MonoBehaviour {
     public Sprite openSprite;
 
     public Vector2 loadPos;
+
+    public string scene;
 	
     void Start()
     {
@@ -31,13 +33,14 @@ public class Door : MonoBehaviour {
                 if(!locked)
                 {
                     player.transform.position = loadPos;
-                    SceneManager.LoadScene("Test");
+                    SceneManager.LoadScene(scene);
                 }
                 else
                 {
                     if(controller.hasKey)
                     {
                         locked = false;
+                        controller.hasKey = false;
                     }
                 }
             }
