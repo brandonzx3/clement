@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         anim.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
-        anim.SetBool("Grounded", isGrounded);
+        anim.SetBool("IsGrounded", isGrounded);
         anim.SetBool("IsRewinding", isRewinding);
         anim.SetBool("IsCrouching", isCourching);
 	}

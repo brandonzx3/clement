@@ -18591,12 +18591,17 @@ Prefab:
     - target: {fileID: 251536980446793586, guid: cab4585e8e851594c9cd6f93a7b0c9ca,
         type: 2}
       propertyPath: m_UseOneWayGrouping
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 61852541081657178, guid: cab4585e8e851594c9cd6f93a7b0c9ca,
         type: 2}
       propertyPath: m_Offset.y
       value: -0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 251536980446793586, guid: cab4585e8e851594c9cd6f93a7b0c9ca,
+        type: 2}
+      propertyPath: m_SurfaceArc
+      value: 56
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cab4585e8e851594c9cd6f93a7b0c9ca, type: 2}
